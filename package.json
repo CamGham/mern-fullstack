@@ -9,7 +9,9 @@
     "heroku-postbuild": "npm run install-client && npm run build",
     "server": "node app.js",
     "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix front-end\"",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix front-end\""
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix front-end\"",
+    "lint": "eslint './src/**/*.{js,jsx}'",
+    "lint:fix": "eslint './src/**/*.{js,jsx}' --fix"
   },
   "repository": {
     "type": "git",
@@ -31,7 +33,26 @@
     "mongoose": "^6.5.1",
     "validation": "^0.0.1"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "eslint": "^8.22.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1"
   }
 }
