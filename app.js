@@ -1,8 +1,12 @@
+/* eslint-disable prettier/prettier */
 // app.js
 
 const express = require('express');
+const cors = require('cors');
+// Accessing the path module
+const path = require("path");
 const connectDB = require('./config/db');
-var cors = require('cors');
+
 
 // routes
 const books = require('./routes/api/books');
@@ -26,8 +30,7 @@ app.use('/api/books', books);
 const port = process.env.PORT || 5001;
 
 
-// Accessing the path module
-const path = require("path");
+
 
 // Step 1:
 app.use(express.static(path.resolve(__dirname, "./front-end/build")));
@@ -38,3 +41,14 @@ app.get("*", function (request, response) {
 
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
+
+
+// connectDB();
+// if(process.env.NODE_ENV == 'production'){
+//   app.use(express.static(__dirname+'/../client/build'));
+//   app.get('*',(req,res) =>{
+//     res.sendFile(__dirname+'/../client/build/index.html')
+//   });
+//   }else{
+//     app.get('/', (req,res) => res,send('API running on port ${port}'))
+//   }

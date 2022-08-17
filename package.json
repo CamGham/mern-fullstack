@@ -9,7 +9,7 @@
     "heroku-postbuild": "npm run install-client && npm run build",
     "server": "node app.js",
     "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix front-end\"",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix front-end\"",
+    "start": "node app.js",
     "lint": "eslint './src/**/*.{js,jsx}'",
     "lint:fix": "eslint './src/**/*.{js,jsx}' --fix"
   },
