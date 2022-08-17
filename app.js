@@ -3,7 +3,6 @@
 
 const express = require('express');
 const cors = require('cors');
-// Accessing the path module
 const path = require("path");
 const connectDB = require('./config/db');
 
